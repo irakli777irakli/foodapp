@@ -1,0 +1,43 @@
+@use "../../index.scss" as global;
+
+.navbar {
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    &__logo{
+
+        font-size: 3rem;
+        font-family: global.$font-primary;
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+
+        span {
+            color: global.$color-primary;
+        }
+        
+
+    }
+    &__navigation{
+        ul{
+
+            
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            list-style: none;
+        }
+        &__link{
+            font-size: 2.5rem;
+            text-decoration: none;
+            font-family: global.$font-primary;
+            font-weight: 300;
+            color: global.$color-dark-1;
+        }
+    }
+}

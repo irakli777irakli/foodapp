@@ -1,0 +1,27 @@
+@use "../../index.scss" as global;
+.recipeCategories{
+    margin-top: 10rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+
+    gap: 2rem;
+    &__category__1{
+        position: relative;
+        img {
+            width: 100%;
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+        }
+
+        h4{
+            position: absolute;
+            font-size: 3.5rem;
+            top: 50%;
+            left: 50%;
+            color: #e6e;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 300;
+            font-family: global.$font-primary;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@use "../../../index.scss" as global;
+
+.gallery{
+    flex: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    gap: 2rem;
+
+
+    &__item{
+        max-width: 25rem;
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+
+        &__img{
+            width: 100%;
+            object-fit: cover;
+            filter: brightness(60%);
+
+        }
+
+        &__name{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: global.$font-primary;
+            font-weight: 500;
+            color: white;
+        }
+    }
+}

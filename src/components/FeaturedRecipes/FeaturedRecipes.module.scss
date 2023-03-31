@@ -1,0 +1,23 @@
+.featured{
+    margin-top: 10rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+
+
+    &__item{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        &__link{
+            clip-path: circle(40%);
+
+            &__img{
+                width: 10rem;
+                height: 10rem;
+                border-radius: 50%;
+            }
+        }
+    }
+}
