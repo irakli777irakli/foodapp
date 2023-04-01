@@ -7,7 +7,7 @@ import Gallery from './Gallery/Gallery';
 function SingleRecipeCategory() {
  
   const { category } = useParams<{category?: string}>();
-    const {getCategoryMeals,singleCategoryMeal} = useGlobalContext();
+    const {getCategoryMeals,singleCategoryMeal,sorted} = useGlobalContext();
 
     useEffect(() => {
       if(getCategoryMeals && category){
@@ -15,11 +15,16 @@ function SingleRecipeCategory() {
       }
     },[])
 
+    useEffect(() => {
+      
+    },[sorted])
+
     if(!singleCategoryMeal) return <h1>Loading...</h1>
+
   return (
     <section className={styles.singleRecipeCategory}>
       <Filter />
-      <Gallery meals={singleCategoryMeal} category={category}/>
+      <Gallery meals={sorted ? sorted : singleCategoryMeal} category={category}/>
 
     </section>
   )

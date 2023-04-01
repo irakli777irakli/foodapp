@@ -19,6 +19,8 @@ export const AppProvider = ({children}:AppProviderProps) => {
     const [singleCategoryMeal,setSingleCategoryMeal] = useState<intro[]>();
     const [singleMeal,setSingleMeal] = useState<Meal>();
     const [featured,setFeatured] = useState<intro[]>();
+    const [sorted,setSorted] = useState<intro[]>();
+
 
     const fecthData = (typeofFetch:string) => {
         const toFetch = fetchMap.get(typeofFetch);
@@ -66,6 +68,15 @@ export const AppProvider = ({children}:AppProviderProps) => {
     }
 
 
+    const sortCategory = (foodname: string) => {
+        if(singleCategoryMeal){
+            const tempMeals = singleCategoryMeal.slice();
+            const sortedMeals = tempMeals.filter((x) => x.strMeal.includes(foodname));
+            setSorted(sortedMeals);
+        }
+        
+    }
+
 
 
 
@@ -75,9 +86,8 @@ export const AppProvider = ({children}:AppProviderProps) => {
 
 
 
-
     return <AppContext.Provider value={{introMeal,singleCategoryMeal,singleMeal,featured,
-        getCategoryMeals
+        getCategoryMeals,sortCategory,sorted
     }}>
         {children}
     </AppContext.Provider>

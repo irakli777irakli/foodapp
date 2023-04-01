@@ -7,6 +7,8 @@
     gap: 2rem;
 
 
+    position: relative;
+
     &__item{
         max-width: 25rem;
         position: relative;
@@ -31,5 +33,12 @@
             font-weight: 500;
             color: white;
         }
+    }
+
+    &__load{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
 }

@@ -73,11 +73,12 @@ export interface ContextInterface {
     singleCategoryMeal: intro[];
     singleMeal: Meal
     featured: intro[];
+    sorted: intro[]
 
 
 
     getCategoryMeals: (categoryName: string) => void;
-
+    sortCategory: (foodname: string) => void;
 
 }
 
