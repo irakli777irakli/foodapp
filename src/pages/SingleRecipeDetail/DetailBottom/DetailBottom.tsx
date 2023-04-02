@@ -8,8 +8,8 @@ interface props{
 
 function DetailBottom({instruction}:props) {
   return (
-    <div>
-      <p>{instruction}</p>
+    <div className={styles.DetailBottom}>
+      <p className={styles.DetailBottom__instruction}>{instruction}</p>
     </div>
   )
 }

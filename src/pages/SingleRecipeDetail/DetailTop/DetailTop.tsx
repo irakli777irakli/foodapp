@@ -9,14 +9,15 @@ interface props{
 function DetailTop({details}:props) {
   return (
     <div className={styles.top}>
-      <div className={styles.imgContent}>
+      <div className={styles.top__imgContent}>
         <img src={details.strMealThumb} alt={details.idMeal} loading='lazy'/>
-        <h4>{details.strMeal}</h4>
-        <span>{details.strArea}</span>
-        <span>{details.strCategory}</span>
-
+        <div className={styles.top__imgContent__description}>
+          <h4>{details.strMeal}</h4>
+          <span>{details.strArea}</span>
+          <span>{details.strCategory}</span>
+        </div>
       </div>
-      <div className={styles.ingredients}>
+      <div className={styles.top__ingredients}>
         <span>{details.strIngredient1}</span>
         <span>{details.strIngredient2}</span>
         <span>{details.strIngredient3}</span>
@@ -29,7 +30,7 @@ function DetailTop({details}:props) {
         <span>{details.strIngredient10}</span>
 
       </div>
-      <div className={styles.sizes}>
+      <div className={styles.top__sizes}>
         <span>{details.strMeasure1}</span>
         <span>{details.strMeasure2}</span>
         <span>{details.strMeasure3}</span>
