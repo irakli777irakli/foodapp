@@ -1,43 +1,90 @@
 @use "../../index.scss" as global;
+@use "../../_animations/navAnimations.scss" as animations;
 
 .navbar {
-    padding: 1.5rem 3rem;
+    padding: 3rem 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    transition: global.$transition-secondary;
 
     &__logo{
-
+       
         font-size: 3rem;
         font-family: global.$font-primary;
         text-decoration: none;
-        color: black;
-        font-weight: 500;
+        color: global.$color-dark-2;
+        font-weight: 400;
+        letter-spacing: 2px;
+
+        animation: bounceLogo 1s ease-in;
 
         span {
+            font-size: 3.2rem;
             color: global.$color-primary;
+            font-weight: 500;
         }
         
 
     }
     &__navigation{
+        
         ul{
-
-            
-
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
+            justify-content: space-around;
             list-style: none;
+            gap: 5rem;
+        
         }
+        
         &__link{
+            position: relative;
             font-size: 2.5rem;
             text-decoration: none;
+            display: inline-block;
             font-family: global.$font-primary;
-            font-weight: 300;
+            font-weight: 400;
             color: global.$color-dark-1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: global.$transition-primary;
+
+            animation: slideNavElements .5s ease-in;
         }
+
+        &__link::before{
+            content: "";
+            position: absolute;
+            
+            transform-origin: center;
+            bottom: -15%;
+            width: 10%;
+            height: 3px;
+            transform: scaleY(0);
+
+            background-color: global.$color-secondary;
+            transition: global.$transition-primary;
+            z-index: -1;
+            border-radius: 2px;
+
+        }
+        &__link:hover{
+            transform: scale(1.05);
+            font-weight: 100;
+        }
+        &__link:hover::before{
+            transform: scaleY(1);
+            width: 100%;
+
+
+        }
+        
     }
+}
+
+
+.hideNav{
+    display: none;
 }

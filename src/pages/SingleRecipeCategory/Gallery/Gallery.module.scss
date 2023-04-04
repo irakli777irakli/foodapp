@@ -2,23 +2,32 @@
 
 .gallery{
     flex: 70%;
+    padding-bottom: 7rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(25rem,max-content));
     gap: 2rem;
-
+    
 
     position: relative;
 
     &__item{
-        max-width: 25rem;
+        
         position: relative;
         border-radius: 4px;
         overflow: hidden;
+
+        &:hover img{
+            transform: scale(1.05);
+            filter: brightness(70%);
+        }
 
         &__img{
             width: 100%;
             object-fit: cover;
             filter: brightness(60%);
+            transition: global.$transition-primary;
+            border-radius: 4px;
+           
 
         }
 
@@ -40,5 +49,22 @@
         bottom: 0;
         left: 50%;
         transform: translate(-50%,-50%);
+
+        outline: none;
+        border: none;
+        font-size: 1.8rem;
+        font-weight: 500;
+        font-family: global.$font-primary;
+        color: global.$color-light-1;
+        width: 15rem;
+        height: 4rem;
+        border-radius: 5px;
+        background-image: linear-gradient(to right bottom, global.$color-primary, global.$color-secondary);
+        cursor: pointer;
+        transition: global.$transition-secondary;
+
+       
+
+
     }
 }

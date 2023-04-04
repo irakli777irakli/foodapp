@@ -1,0 +1,28 @@
+@keyframes slideNavElements {
+    0%{
+        opacity: 0;
+        transform: translateX(-1rem);
+    }
+
+    100%{
+        opacity: .5;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounceLogo {
+    0%{
+        opacity: .4;
+        transform: scale(0);
+    }
+
+    75%{
+        opacity: .7;
+        transform: scale(1.05);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1)
+    }
+}

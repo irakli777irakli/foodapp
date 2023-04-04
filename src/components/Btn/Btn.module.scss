@@ -1,0 +1,43 @@
+@use "../../index.scss" as global;
+.btn{
+        font-size: 1.7rem;
+        letter-spacing: 1px;
+        padding: 1.5rem 4rem;
+        font-family: global.$font-primary;
+        border-radius: 5px;
+        font-weight: 500;
+        text-transform: uppercase;
+        border: none;
+        outline: none;
+    
+}
+
+.primarygreen{
+    background-color: global.$color-secondary;
+    color: global.$color-light-1;
+    border: 1px solid global.$color-secondary;
+
+    transition: global.$transition-primary;
+
+    &:hover{
+        background-color: global.$color-light-1;
+        color: global.$color-secondary;
+        border: 1px solid global.$color-secondary;
+        transform: translateY(-1px);
+        cursor: pointer;
+    }
+}
+.outlinegreen{
+    background-color: global.$color-light-1;
+    color: global.$color-secondary;
+    border: 1px solid global.$color-secondary;
+    transition: global.$transition-primary;
+
+    &:hover{
+        background-color:  global.$color-secondary;
+        color: global.$color-light-1;
+        border: 1px solid global.$color-light-1;
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+}

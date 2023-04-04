@@ -1,14 +1,21 @@
 @use "../../index.scss" as global;
 .recipeCategories{
-    margin-top: 10rem;
+    margin-top: 15rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
-
+    grid-template-columns: repeat(auto-fit,minmax(35rem,min-content));
+    grid-template-rows: auto;
     gap: 2rem;
-    &__category__1{
+    
+    justify-content: center;
+    
+
+    &__category{
+        box-shadow: global.$box-shadow-primary;
+        max-width: 35rem;
         position: relative;
         img {
             width: 100%;
+            object-fit: cover;
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
         }
 
@@ -16,8 +23,10 @@
             position: absolute;
             font-size: 3.5rem;
             top: 50%;
-            left: 50%;
-            color: #e6e;
+            left: 30%;
+            background-image: linear-gradient(to right, rgb(67, 155, 79), rgb(63, 207, 111));
+            -webkit-background-clip: text;
+            color: transparent;
             text-align: center;
             text-transform: uppercase;
             font-weight: 300;

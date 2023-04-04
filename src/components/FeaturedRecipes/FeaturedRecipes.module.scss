@@ -1,23 +1,35 @@
-.featured{
-    margin-top: 10rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+@use "../../index.scss" as global;
+.featuredRecipes{
+    margin-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    &__featured{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
 
 
-    &__item{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        &__item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
 
-        &__link{
-            clip-path: circle(40%);
-
-            &__img{
-                width: 10rem;
-                height: 10rem;
-                border-radius: 50%;
+            &__link{
+                clip-path: circle(40%);
+                overflow: hidden;
+                &__img{
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 50%;
+                    transition: global.$transition-primary;
+                    
+                    &:hover{
+                        transform: scale(1.05);
+                        filter: brightness(60%);
+                    }
+                }
             }
         }
-    }
+}
 }

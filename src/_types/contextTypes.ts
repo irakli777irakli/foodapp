@@ -73,9 +73,11 @@ export interface ContextInterface {
     singleCategoryMeal: intro[];
     singleMeal: Meal
     featured: intro[];
-    sorted: intro[]
-
-
+    sorted: intro[];
+    loading: boolean;
+    showNav: boolean;
+    setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
+    currCategory: string;
 
     getCategoryMeals: (categoryName: string) => void;
     sortCategory: (foodname: string) => void;

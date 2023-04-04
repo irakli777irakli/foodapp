@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { intro } from '../../../_types/contextTypes'
 import styles from './Gallery.module.scss'
+import Btn from '../../../components/Btn/Btn';
 
 interface props {
   meals: intro[] ;
@@ -36,12 +37,12 @@ function Gallery({meals,category}:props) {
   <div className={styles.gallery}>
     {meals.slice(0,circulating).map((x) => {
       const {idMeal,strMeal,strMealThumb} = x;
-      return <div key={idMeal} className={styles.gallery__item}>
-        <Link to={`/${category}/${idMeal}`}>
+      return (
+        <Link key={idMeal} to={`/${category}/${idMeal}`} className={styles.gallery__item}>
         <img src={strMealThumb} alt={strMeal} loading="lazy" className={styles.gallery__item__img}/>
         <h4 className={styles.gallery__item__name}>{strMeal}</h4>
         </Link>
-      </div>
+      )
     })}
     {Load && <button className={styles.gallery__load} onClick={() => addCirculation()}>Load</button>}
   </div>

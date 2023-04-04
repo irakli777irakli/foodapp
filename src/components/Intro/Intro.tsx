@@ -1,30 +1,32 @@
 import React from 'react'
 import styles from './Intro.module.scss'
+import Btn from '../Btn/Btn'
+import Card from '../Card/Card'
+import { useGlobalContext } from '../../context'
+import Heading from '../Heading/Heading'
 
 function Intro() {
+
+  const {introMeal} = useGlobalContext();
+
+
   return (
-    <section className={styles.intro}>
+    <section id='intro' className={styles.intro}>
 
       <div className={styles.intro__left}>
-        <h1 className={styles.intro__left__heading}>Let's Start cooking with popular recipes</h1>
+        <Heading content={"Let's Start cooking with popular recipes"} size='huge' color='graysh'/>
         <span>Want to learn cook but confused how to start?</span>
         <span>No need to worry again</span>
         <div className={styles.intro__left__btns}>
-          <button className={styles.intro__left__btns__btn}>get started</button>
-          <button className={styles.intro__left__btns__btn}>Expore menu</button>
+          <Btn content={"get started"} look={"primarygreen"}/>
+          <Btn content={"explore menu"} look={"outlinegreen"}/>
         </div>
       </div>
 
       <div className={styles.intro__right}>
         <img src='/introfood.webp' alt='food' className={styles.intro__right__img}/>
-
-        <div className={styles.card}>
-          <img src='/introfood.webp' alt='food' className={styles.card__img}/>
-          <div className={styles.card__content}>
-            <h4>the product</h4>
-            <span>I really like this product</span>
-          </div>
-        </div>
+        {introMeal && introMeal.slice(0,2).map((x,i) => <Card key={x.idMeal} prop={x} pos={i}/>)}
+        
       </div>
 
 

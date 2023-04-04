@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styles from './RecipeCategories.module.scss'
+import Heading from '../Heading/Heading';
 
 
 const categories = [
@@ -22,19 +23,19 @@ const categories = [
 ]
 
 function RecipeCategories() {
+
+  
   return (
-    <section className={styles.recipeCategories}>
-      <div>
-        <h1>Search through top categories</h1>
-      </div>
+    <section id='recipecategories' className={styles.recipeCategories}>
+      <Heading content={"Search through top categories"} size='medium' color='orange'/>
       {categories && categories.map((x,i) => {
         const {img,name,category} = x;
-        return <div key={i} className={styles.recipeCategories__category__1}>
-          <Link to={`/${category}`}>
-        <img src={img} alt='food' loading='lazy'/>
-        <h4>{name}</h4>
-        </Link>
-      </div>
+        return (
+              <Link key={i} to={`/${category}`} className={styles.recipeCategories__category}>
+                <img src={img} alt='food' loading='lazy'/>
+                <h4>{name}</h4>
+            </Link>
+        )
       })}
       
       

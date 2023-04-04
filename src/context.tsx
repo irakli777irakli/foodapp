@@ -20,6 +20,11 @@ export const AppProvider = ({children}:AppProviderProps) => {
     const [singleMeal,setSingleMeal] = useState<Meal>();
     const [featured,setFeatured] = useState<intro[]>();
     const [sorted,setSorted] = useState<intro[]>();
+    const [loading,setLoading] = useState<boolean>(false);
+
+    const [showNav,setShowNav] = useState(true);
+
+
 
 
     const fecthData = (typeofFetch:string) => {
@@ -35,7 +40,12 @@ export const AppProvider = ({children}:AppProviderProps) => {
                     })
                 }
             })
-            .then((data) => {setIntroMeal(data),setFeatured(data)})
+            .then((data) => {
+                setIntroMeal(data);
+                localStorage.setItem("introMeal",JSON.stringify(data));
+                setFeatured(data)
+            
+            });
         }
     }
 
@@ -48,25 +58,38 @@ export const AppProvider = ({children}:AppProviderProps) => {
     ])
 
 
-    const getCategoryMeals = async (categoryname: string) => {
+    const getCategoryMeals = async(categoryname: string) => {
+        const lcItem = localStorage.getItem("RecipeCategory");
+        const lcCurrent = localStorage.getItem("currCategory");
+        
+
+        if(lcItem && (lcCurrent === categoryname)){
+            // console.log("this")    
+            const data = await JSON.parse(lcItem);
+            setSingleCategoryMeal(data);
+            return;  
+        }
+
+
+        
         const item = categoryMap.get(categoryname);
         if(item) {
-          const meals = await Promise.all(item.map(async (x) => {
+            localStorage.setItem("currCategory",categoryname);
+            const meals = await Promise.all(item.map(async (x) => {
             const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${x}`).then(res => res.json());
             return response;
         }));
 
         const flattend: intro[] =  meals.flatMap(x => x.meals);  
         setSingleCategoryMeal(flattend);
-
+        localStorage.setItem("RecipeCategory",JSON.stringify(flattend));
+        
         }
+        
+        
 
-        // const notesWithUser = await Promise.all(notes.map(async (note) => {
-        //     const user = await User.findById(note.user).lean().exec()
-        //     return { ...note, username: user.username }
-        // }))
+        
     }
-
 
     const sortCategory = (foodname: string) => {
         if(singleCategoryMeal){
@@ -77,17 +100,29 @@ export const AppProvider = ({children}:AppProviderProps) => {
         
     }
 
+    const loadInitialState = async () => {
+        const isData =  localStorage.getItem("introMeal");
+        if(isData){
+            const data = await JSON.parse(isData);
+            setIntroMeal(data)
+            setFeatured(data)
+
+            return;
+        }
+        fecthData("intro")
 
 
+    }
 
     useEffect(() =>{
-        fecthData("intro")
+        loadInitialState();
+        
     },[])
 
 
 
     return <AppContext.Provider value={{introMeal,singleCategoryMeal,singleMeal,featured,
-        getCategoryMeals,sortCategory,sorted
+        getCategoryMeals,sortCategory,sorted,loading,showNav,setShowNav
     }}>
         {children}
     </AppContext.Provider>

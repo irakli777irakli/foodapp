@@ -35,7 +35,11 @@ function DetailTop({details}:props) {
         <span>{details.strMeasure2}</span>
         <span>{details.strMeasure3}</span>
         <span>{details.strMeasure4}</span>
-        <span>{details.strMeasure5}</span>
+        <span>{details.strMeasure6}</span>
+        <span>{details.strMeasure7}</span>
+        <span>{details.strMeasure8}</span>
+        <span>{details.strMeasure9}</span>
+        <span>{details.strMeasure10}</span>
       </div>
 
 
