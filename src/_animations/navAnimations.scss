@@ -26,3 +26,28 @@
         transform: scale(1)
     }
 }
+
+
+
+
+@keyframes slideFleshedNav{
+    0%{
+        transform: translateX(-120rem);
+    }
+    
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes hideFleshedNav{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-120rem);
+    }
+    
+
+}

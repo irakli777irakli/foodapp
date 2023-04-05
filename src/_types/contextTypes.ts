@@ -79,6 +79,10 @@ export interface ContextInterface {
     setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
     currCategory: string;
 
+    fleshedNav:boolean;
+    setFleshedNav: React.Dispatch<React.SetStateAction<boolean>>;
+
+
     getCategoryMeals: (categoryName: string) => void;
     sortCategory: (foodname: string) => void;
 

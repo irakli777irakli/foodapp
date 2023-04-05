@@ -1,4 +1,4 @@
-
+@import "./_mixins/respond.scss";
 
 *,
 ::before,
@@ -19,6 +19,7 @@ $color-dark-1: rgb(119, 126, 121);
 $color-dark-2:rgba(0, 0, 0, 0.527);
 
 $box-shadow-primary: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+$box-shadow-secondary: 0 1rem 2rem rgba(31, 192, 79, 0.452);
 
 $font-primary: 'Ubuntu', serif;
 
@@ -28,8 +29,26 @@ $transition-secondary: all .4s ease;
 
 html{
   font-size: 62.5%;
-  
   background-color: $color-light-1;
+
+  @include respond(tab-land){ // width < 1200
+    font-size: 56.25%; 
+  }
+
+@include respond(tab-port){ // width < 900
+    font-size: 50%; 
+}
+
+@include respond(phone){ // width < 900
+  font-size: 37.5%; 
+}
+
+
+@include respond(big-desktop){ // width > 1800
+    font-size: 75%; 
+}
+
+
 }
 
 

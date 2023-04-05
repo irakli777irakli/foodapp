@@ -1,7 +1,14 @@
+@import "../../_mixins/respond.scss";
+
 .singleRecipeCategory{
     padding: 5rem 15rem;
     display: flex;
-    justify-content: space-between;
-    
+
+    @include respond(tab-land){
+    flex-direction: column;
+    gap: 2rem; 
+    padding: 5rem 10rem;
+
+    }
 
 }

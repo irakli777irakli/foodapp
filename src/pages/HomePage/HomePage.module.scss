@@ -1,5 +1,10 @@
+@import "../../_mixins/respond.scss";
+
 .homePage{
     max-width: 120rem;
     margin: 10rem auto;
 
+    @include respond(tab-land){
+        margin: 10rem 5rem;
+    }
 }

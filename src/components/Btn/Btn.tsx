@@ -9,7 +9,10 @@ interface props {
 
 function Btn({content,look}:props) {
   return (
-    <button className={`${styles.btn} ${styles[look]}`}>{content}</button>
+    <button
+     className={`${styles.btn} ${styles[look]} ${content === "subscribe" ? styles.inputBtn: null}`}>
+      {content}
+      </button>
   )
 }
 

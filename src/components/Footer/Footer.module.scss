@@ -1,4 +1,6 @@
 @use '../../index.scss' as global;
+@import "../../_mixins/respond.scss";
+
 .footer{
     margin-top: 10rem;
     position: relative;
@@ -12,6 +14,7 @@
 
 
     &__content {
+        width: 80%;
         position: absolute;
         top: 40%;
         left: 50%;
@@ -26,6 +29,10 @@
             font-weight: 500;
             font-family: global.$font-primary;
             text-align: center;
+
+            @include respond(phone){
+                font-size: 2.4rem;
+            }
 
         }
 
@@ -50,7 +57,11 @@
             padding: 1.5rem  3rem;
             width: 89%;
             transition: global.$transition-primary;
-            
+            @include respond(tab-land){
+                width: 95%;
+               
+        
+            }
             
             &:focus{
                 width: 100%;
@@ -65,4 +76,13 @@
     position: absolute;
     top: 5%;
     right: 10%;
+
+    @include respond(tab-land){
+        top: 10%;
+
+    }
+
+    @include respond(phone){
+        right: 2%;
+    }
 }

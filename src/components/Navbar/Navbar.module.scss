@@ -1,5 +1,7 @@
 @use "../../index.scss" as global;
 @use "../../_animations/navAnimations.scss" as animations;
+@import "../../_mixins/respond.scss";
+
 
 .navbar {
     padding: 3rem 5rem;
@@ -27,64 +29,32 @@
         
 
     }
-    &__navigation{
-        
-        ul{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            list-style: none;
-            gap: 5rem;
-        
-        }
-        
-        &__link{
-            position: relative;
-            font-size: 2.5rem;
-            text-decoration: none;
-            display: inline-block;
-            font-family: global.$font-primary;
-            font-weight: 400;
-            color: global.$color-dark-1;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: global.$transition-primary;
-
-            animation: slideNavElements .5s ease-in;
-        }
-
-        &__link::before{
-            content: "";
-            position: absolute;
-            
-            transform-origin: center;
-            bottom: -15%;
-            width: 10%;
-            height: 3px;
-            transform: scaleY(0);
-
-            background-color: global.$color-secondary;
-            transition: global.$transition-primary;
-            z-index: -1;
-            border-radius: 2px;
-
-        }
-        &__link:hover{
-            transform: scale(1.05);
-            font-weight: 100;
-        }
-        &__link:hover::before{
-            transform: scaleY(1);
-            width: 100%;
 
 
-        }
-        
-    }
+
+    
 }
 
 
-.hideNav{
+.hamburger{
+    display: none;
+    
+    @include respond(tab-land){
+        display: flex;
+        width: 40px;
+        height: 20px;
+        z-index: 200;
+        flex-direction: column;
+        gap: 1rem;
+
+        span{
+            width: 90%;
+            height: 3px;
+            background-color: black;
+        }
+    }
+}
+
+.hidden{
     display: none;
 }

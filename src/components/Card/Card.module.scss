@@ -1,5 +1,6 @@
 @use "../../index.scss" as global;
 @use "../../_animations/introAnimations.scss";
+@import "../../_mixins/respond.scss";
 
 .card{
     position: absolute;
@@ -42,10 +43,15 @@
     top: 70%;
     left: 0;
     animation: CardfadeIn .5s ease;
+
+   
 }
 .last{
     top: 53%;
     right: 0;
     animation: CardfadeIn 1s ease;
-
+    @include respond(phone){
+        top: 10%;
+        right: -5%;
+    }
 }

@@ -3,25 +3,35 @@ import { Link as Li} from 'react-router-dom';
 import {Link} from "react-scroll";
 import styles from './Navbar.module.scss';
 import { useGlobalContext } from '../../context';
+import Fleshed from '../Fleshed/Fleshed';
+import UseWindowSize from '../../Hooks/UseWindowSize';
 
 function Navbar() {
 
-  const {showNav,setShowNav} = useGlobalContext();
+  const {showNav,fleshedNav,setFleshedNav} = useGlobalContext();
 
-  useEffect(() => {},[showNav])
+  useEffect(() => {},[showNav,fleshedNav])
 
+  const addFleshed = () => {
+    if(setFleshedNav) setFleshedNav(!fleshedNav);
+  }
+
+
+  const [height,width] = UseWindowSize();
+  if(width > 1200 && setFleshedNav) setFleshedNav(false); 
+  
+  
   return (
     <header className={styles.navbar}>
       <Li className={styles.navbar__logo} to="/">My<span>Food</span></Li>
       
-      <nav className={`${styles.navbar__navigation} ${!showNav ? styles.hideNav : null}`}>
-        <ul>
-          <li><Link className={styles.navbar__navigation__link}  to="intro" spy={true} smooth={true} offset={50} duration={500}>Home</Link></li>
-          <li><Link className={styles.navbar__navigation__link} to="recipecategories"  spy={true} smooth={true} offset={50} duration={500}>Recipes</Link></li>
-          <li><Link className={styles.navbar__navigation__link} to="featured"  spy={true} smooth={true} offset={50} duration={500}>Featured</Link></li>
-          <li><Link className={styles.navbar__navigation__link} to="footer" spy={true} smooth={true} offset={50} duration={500}>About</Link></li>
-        </ul>
-      </nav>
+      <Fleshed showNav={showNav} fleshed={false}/>
+       <div  className={`${showNav ? styles.hamburger : styles.hidden}`} onClick={() => addFleshed()}>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+      </div>
+      {fleshedNav  && <Fleshed showNav={showNav} fleshed={true} setFleshedNav={setFleshedNav}/>}
     </header>
   )
 }

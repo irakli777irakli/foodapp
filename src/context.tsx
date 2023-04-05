@@ -23,6 +23,7 @@ export const AppProvider = ({children}:AppProviderProps) => {
     const [loading,setLoading] = useState<boolean>(false);
 
     const [showNav,setShowNav] = useState(true);
+    const [fleshedNav,setFleshedNav] = useState(false);
 
 
 
@@ -122,7 +123,7 @@ export const AppProvider = ({children}:AppProviderProps) => {
 
 
     return <AppContext.Provider value={{introMeal,singleCategoryMeal,singleMeal,featured,
-        getCategoryMeals,sortCategory,sorted,loading,showNav,setShowNav
+        getCategoryMeals,sortCategory,sorted,loading,showNav,setShowNav,fleshedNav,setFleshedNav
     }}>
         {children}
     </AppContext.Provider>

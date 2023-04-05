@@ -1,6 +1,7 @@
 @use "../../../index.scss" as global;
+@import "../../../_mixins/respond.scss";
 .filter{
-    flex: 30%;
+    flex:30%;
     align-self: baseline;
 
     display: flex;

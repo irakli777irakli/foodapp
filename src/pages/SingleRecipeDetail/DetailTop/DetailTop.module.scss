@@ -1,10 +1,17 @@
 @use "../../../index.scss" as global;
+@import "../../../_mixins/respond.scss";
 .top{
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 3rem 5rem;
     gap: 3rem;
+
+
+    @include respond(tab-port){
+        flex-direction: column;
+    }
+
     
     &__imgContent{
         flex: 1;
@@ -16,7 +23,13 @@
         img{
             width: 65%;
             border-radius: 2px;
+
+            @include respond(tab-port){
+                width: 50%;
+                object-fit: cover;
+            }
         }
+
 
         &__description{
             font-family: global.$font-primary;
@@ -39,46 +52,59 @@
         }
     }
 
-    .box-placeholder{
-        flex:1;
+    
+
+    &__content{
+        flex: 2;
         display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-        justify-content: flex-start;
-        box-shadow: global.$box-shadow-primary;
-        padding: 1.5rem 0;
-        background-color: white;
-        border-radius: 5px;
-    }
+        gap: 1rem;
 
-    .ingredient-placeholder{
-        font-family: global.$font-primary;
-        font-weight: bold;
-        font-size: 2rem;
-        text-transform: capitalize;
+        @include respond(tab-port){
+            width: 100%;
+        }
+    
 
-    }
+        .box-placeholder{
+            flex:1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: global.$box-shadow-primary;
+            padding: 1.5rem 0;
+            background-color: white;
+            border-radius: 5px;
+        }
+    
+        .ingredient-placeholder{
+            font-family: global.$font-primary;
+            font-weight: bold;
+            font-size: 2rem;
+            text-transform: capitalize;
+    
+        }
 
-
-    &__ingredients{
-        @extend .box-placeholder;
-
-        span{
-            @extend .ingredient-placeholder;
-            color: rgba(255, 166, 0, 0.692);
-            
+        &__ingredients{
+            @extend .box-placeholder;
+    
+            span{
+                @extend .ingredient-placeholder;
+                color: rgba(255, 166, 0, 0.692);
+                
+            }
+        }
+    
+        &__sizes{
+            @extend .box-placeholder;
+    
+            span{
+                @extend .ingredient-placeholder;
+    
+                color: rgba(255, 68, 0, 0.384);
+               
+            }
         }
     }
-
-    &__sizes{
-        @extend .box-placeholder;
-
-        span{
-            @extend .ingredient-placeholder;
-
-            color: rgba(255, 68, 0, 0.384);
-           
-        }
-    }
+    
 }

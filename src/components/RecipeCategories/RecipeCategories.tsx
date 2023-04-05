@@ -27,11 +27,12 @@ function RecipeCategories() {
   
   return (
     <section id='recipecategories' className={styles.recipeCategories}>
-      <Heading content={"Search through top categories"} size='medium' color='orange'/>
+      <Heading content={"Search through top categories"} size='medium' color='orange' isGridItem={true}/>
       {categories && categories.map((x,i) => {
         const {img,name,category} = x;
         return (
-              <Link key={i} to={`/${category}`} className={styles.recipeCategories__category}>
+              <Link key={i} to={`/${category}`} 
+              className={`${styles.recipeCategories__category} ${styles[category]}`}>
                 <img src={img} alt='food' loading='lazy'/>
                 <h4>{name}</h4>
             </Link>

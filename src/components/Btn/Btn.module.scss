@@ -1,4 +1,5 @@
 @use "../../index.scss" as global;
+@import "../../_mixins/respond.scss";
 .btn{
         font-size: 1.7rem;
         letter-spacing: 1px;
@@ -9,6 +10,9 @@
         text-transform: uppercase;
         border: none;
         outline: none;
+        @include respond(tab-land){
+            align-self: baseline;       
+        }
     
 }
 
@@ -18,6 +22,8 @@
     border: 1px solid global.$color-secondary;
 
     transition: global.$transition-primary;
+
+   
 
     &:hover{
         background-color: global.$color-light-1;
@@ -32,12 +38,25 @@
     color: global.$color-secondary;
     border: 1px solid global.$color-secondary;
     transition: global.$transition-primary;
-
+   
     &:hover{
         background-color:  global.$color-secondary;
         color: global.$color-light-1;
         border: 1px solid global.$color-light-1;
         cursor: pointer;
         transform: scale(1.05);
+    }
+}
+
+
+.inputBtn{
+    @include respond(tab-land){
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+    }
+
+    @include respond(tab-port){
+        font-size: 1.2rem;
+        padding: 1rem 1rem;
     }
 }

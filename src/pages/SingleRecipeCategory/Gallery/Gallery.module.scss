@@ -1,14 +1,27 @@
 @use "../../../index.scss" as global;
+@import "../../../_mixins/respond.scss";
+
 
 .gallery{
-    flex: 70%;
+    flex:70%;
+
     padding-bottom: 7rem;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(25rem,max-content));
     gap: 2rem;
-    
+
 
     position: relative;
+
+    @include respond(tab-land){
+        grid-template-columns: repeat(auto-fit,minmax(20rem,max-content));
+
+    }
+
+    @include respond(phone){
+        grid-template-columns: repeat(auto-fit,minmax(17rem,max-content));
+
+    }
 
     &__item{
         
