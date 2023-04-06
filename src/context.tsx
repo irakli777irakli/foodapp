@@ -24,6 +24,8 @@ export const AppProvider = ({children}:AppProviderProps) => {
 
     const [showNav,setShowNav] = useState(true);
     const [fleshedNav,setFleshedNav] = useState(false);
+    const [validRoute,setValidRoute] = useState(true);
+
 
 
 
@@ -58,16 +60,27 @@ export const AppProvider = ({children}:AppProviderProps) => {
         ["vegie",["Vegan","Vegetarian"]]
     ])
 
+    const validateCategory = (category: string) => {
+        const valid = categoryMap.get(category);
+        console.log(valid)
+        if(!valid){ setValidRoute(false); return;}
+        
+        getCategoryMeals(category);
+        setValidRoute(true);
+        
+    }
+
 
     const getCategoryMeals = async(categoryname: string) => {
         const lcItem = localStorage.getItem("RecipeCategory");
         const lcCurrent = localStorage.getItem("currCategory");
-        
+        setLoading(true)
 
         if(lcItem && (lcCurrent === categoryname)){
             // console.log("this")    
             const data = await JSON.parse(lcItem);
             setSingleCategoryMeal(data);
+            setLoading(false)
             return;  
         }
 
@@ -84,7 +97,7 @@ export const AppProvider = ({children}:AppProviderProps) => {
         const flattend: intro[] =  meals.flatMap(x => x.meals);  
         setSingleCategoryMeal(flattend);
         localStorage.setItem("RecipeCategory",JSON.stringify(flattend));
-        
+        setLoading(false);
         }
         
         
@@ -123,7 +136,8 @@ export const AppProvider = ({children}:AppProviderProps) => {
 
 
     return <AppContext.Provider value={{introMeal,singleCategoryMeal,singleMeal,featured,
-        getCategoryMeals,sortCategory,sorted,loading,showNav,setShowNav,fleshedNav,setFleshedNav
+        getCategoryMeals,sortCategory,sorted,loading,showNav,setShowNav,fleshedNav,setFleshedNav,
+        validateCategory,validRoute
     }}>
         {children}
     </AppContext.Provider>

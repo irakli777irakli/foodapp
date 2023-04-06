@@ -45,6 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 1rem 0rem;
         &__input {
             
             border: none;
@@ -74,15 +75,16 @@
 
 .btn{
     position: absolute;
-    top: 5%;
+    top: 15%;
     right: 10%;
 
     @include respond(tab-land){
-        top: 10%;
+        top: 20%;
 
     }
 
     @include respond(phone){
+        top: 25%;
         right: 2%;
     }
 }

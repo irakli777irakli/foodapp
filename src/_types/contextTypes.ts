@@ -81,10 +81,12 @@ export interface ContextInterface {
 
     fleshedNav:boolean;
     setFleshedNav: React.Dispatch<React.SetStateAction<boolean>>;
-
+    
+    validRoute: boolean;
 
     getCategoryMeals: (categoryName: string) => void;
     sortCategory: (foodname: string) => void;
+    validateCategory: (category: string) => void;
 
 }
 
