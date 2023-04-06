@@ -13,10 +13,7 @@ function SingleRecipeCategory() {
     validRoute
     } = useGlobalContext();
 
-    const dispayError = () => {
-      return <Error />
-    }
-
+   
     useEffect(() => {
       if(setShowNav) setShowNav(false);
       if(getCategoryMeals && category && validateCategory ){

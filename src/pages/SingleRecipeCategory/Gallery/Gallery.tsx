@@ -12,24 +12,29 @@ interface props {
 
 function Gallery({meals,category}:props) {
   
-  const [circulating,setCirculating] = useState<number>(Math.floor(meals.length / 10))
+  const [circulating,setCirculating] = useState<number>(
+    meals.length >=10 ? Math.floor(meals.length / 10) : Math.ceil(meals.length / 10)
+    )
   const [Load,setLoad] = useState(true);
  
   useEffect(() => {
-    setLoad(true)
+    setCirculating(meals.length >=10 ? Math.floor(meals.length / 10) : Math.ceil(meals.length / 10))
   },[meals])
  
 
-
-
   const addCirculation = () => {
-    if(circulating <= meals.length && circulating + Math.floor(meals.length / 10) < meals.length){
+    const mealLength = meals.length;
+    
+    if(mealLength >= circulating && mealLength >= 10){
       setCirculating(circulating + Math.floor(meals.length / 10))
 
-    }else{
-      setCirculating(circulating + (meals.length - circulating))
-      setLoad(false);
     }
+    else{
+      setCirculating(circulating + Math.ceil(meals.length / 10))
+      
+    }
+    
+    if(mealLength === circulating) setLoad(false);
   }
 
   return (

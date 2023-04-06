@@ -132,7 +132,7 @@ export const AppProvider = ({children}:AppProviderProps) => {
         loadInitialState();
         
     },[])
-
+    
 
 
     return <AppContext.Provider value={{introMeal,singleCategoryMeal,singleMeal,featured,
